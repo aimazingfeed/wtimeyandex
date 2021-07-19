@@ -32,6 +32,7 @@ dependencies {
     implementation("com.just-ai.jaicf:mongo:$jaicf")
 
     implementation("io.ktor:ktor-server-netty:$ktor")
+    implementation ("org.json:json:20190722")
 }
 
 tasks {
