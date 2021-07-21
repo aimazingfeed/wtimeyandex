@@ -18,7 +18,7 @@ fun getCoordinate (city: String): Coordinate {
 }
 
 fun getTime (lat : String, lon : String): String {
-    val url = URL("https://api.sunrise-sunset.org/json?lat=$lat&lng=$lon").readText()
+    val url = URL("https://api.sunrise-sunset.org/json?lat=$lat&lng=$lon&date=today").readText()
     val result = JSONObject(url)
     val res = result.getJSONObject("results")
     return "sunrise time is "+ res.getString("sunrise") + "\n" +
