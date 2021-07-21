@@ -12,8 +12,8 @@ fun getCoordinate (city: String): Coordinate {
     val arrayIn = result.getJSONObject(0)
     val position = arrayIn.getJSONObject("position")
 
-    val lat : String = position.getInt("lat").toString()
-    val lon : String = position.getInt("lon").toString()
+    val lat : String = position.getDouble("lat").toString()
+    val lon : String = position.getDouble("lon").toString()
     return Coordinate(lat,lon)
 }
 
