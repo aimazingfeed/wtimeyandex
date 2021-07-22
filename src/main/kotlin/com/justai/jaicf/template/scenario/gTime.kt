@@ -32,7 +32,7 @@ fun getTime (lat : String, lon : String): String {
 }
 
 fun convertToCustomFormat(dateStr: String?): String {
-    val utc = TimeZone.getTimeZone("UTC")
+    val utc = TimeZone.getTimeZone("Moscow")
     val sourceFormat = SimpleDateFormat("KK:mm:ss aa")
     val destFormat = SimpleDateFormat("HH:mm:ss")
     sourceFormat.timeZone = utc
@@ -41,8 +41,6 @@ fun convertToCustomFormat(dateStr: String?): String {
 }
 
 //fun getTimeEuro(city: String):String {
-////    var cityTime = URL("http://worldtimeapi.org/api/timezone/Europe/$city").readText()
-//
 //    val cityTime = URL("https://timezoneapi.io/api/timezone/?Europe/$city&token=aFTerCYjbzLTxfAsGmkX").readText()
 //    val timeJson = JSONObject(cityTime)
 //    val data = timeJson.getJSONObject("data")
