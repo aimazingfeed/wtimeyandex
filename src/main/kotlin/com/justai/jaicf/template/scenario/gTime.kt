@@ -32,9 +32,9 @@ fun getTime (lat : String, lon : String): String {
 }
 
 fun convertToCustomFormat(dateStr: String?): String {
-    val utc = TimeZone.getTimeZone("Moscow")
-    val sourceFormat = SimpleDateFormat("HH:mm:ss aa")
-    val destFormat = SimpleDateFormat("HH:mm:ss aa")
+    val utc = TimeZone.getTimeZone("UTC")
+    val sourceFormat = SimpleDateFormat("KK:mm:ss aa")
+    val destFormat = SimpleDateFormat("HH:mm:ss")
     sourceFormat.timeZone = utc
     val convertedDate = sourceFormat.parse(dateStr)
     return destFormat.format(convertedDate)
