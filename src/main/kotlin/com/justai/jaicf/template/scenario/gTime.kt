@@ -3,6 +3,7 @@ import com.justai.jaicf.template.Coordinate
 import org.json.*
 import java.net.URL
 import java.text.SimpleDateFormat
+import java.time.ZoneId
 import java.util.*
 
 
@@ -31,7 +32,7 @@ fun getTime (lat : String, lon : String): String {
 }
 
 fun convertToCustomFormat(dateStr: String?): String {
-    val utc = TimeZone.getTimeZone("UTC")
+    val utc = TimeZone.getTimeZone("Moscow")
     val sourceFormat = SimpleDateFormat("HH:mm:ss aa")
     val destFormat = SimpleDateFormat("HH:mm:ss aa")
     sourceFormat.timeZone = utc
