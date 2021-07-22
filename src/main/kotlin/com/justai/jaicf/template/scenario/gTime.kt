@@ -22,9 +22,9 @@ fun getTime (lat : String, lon : String): String {
     val url = URL("https://api.sunrise-sunset.org/json?lat=$lat&lng=$lon&date=today").readText()
     val result = JSONObject(url)
     val res = result.getJSONObject("results")
-    val timeSet = res.getString("sunset")+" GMT+03:00"
+    val timeSet = res.getString("sunset")
     val convertedTimeSet = convertToCustomFormat(timeSet)
-    val timeRise = res.getString("sunrise")+" GMT+03:00"
+    val timeRise = res.getString("sunrise")
     val convertedTimeRise = convertToCustomFormat(timeRise)
     return "Время восхода "+ convertedTimeRise + "\n" +
             "Время заката " + convertedTimeSet
@@ -32,7 +32,7 @@ fun getTime (lat : String, lon : String): String {
 
 fun convertToCustomFormat(dateStr: String?): String {
     val utc = TimeZone.getTimeZone("UTC")
-    val sourceFormat = SimpleDateFormat("HH:mm:ss aa zzz")
+    val sourceFormat = SimpleDateFormat("HH:mm:ss aa")
     val destFormat = SimpleDateFormat("HH:mm:ss aa")
     sourceFormat.timeZone = utc
     val convertedDate = sourceFormat.parse(dateStr)
