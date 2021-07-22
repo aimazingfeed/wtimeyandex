@@ -48,8 +48,8 @@ val MainScenario = Scenario {
 
                 val coordinates = getCoordinate(request.input)
                 val time = getTime(coordinates.lat, coordinates.lon)
-                //val time = getTime("59", "30")
                 reactions.alice?.say(time)
+                reactions.alice?.say("")
                 reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
                 reactions.buttons("Да, давай", "Нет, спасибо")
 
