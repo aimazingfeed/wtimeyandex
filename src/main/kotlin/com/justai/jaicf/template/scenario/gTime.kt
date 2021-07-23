@@ -14,12 +14,14 @@ fun getCoordinate (city: String): Coordinate {
     val position = arrayIn.getJSONObject("position")
     val lat : String = position.getDouble("lat").toString()
     val lon : String = position.getDouble("lon").toString()
-    url = URL("https://maps.googleapis.com/maps/api/timezone/json?timeZoneName&location=$lat,$lon&timestamp=1331161200&key=AIzaSyCRb2M6zmsZlz5vqDSVhRjZShvUat6tqjc").readText()
+    url = URL("https://maps.googleapis.com/maps/api/timezone/json?timeZoneName&" +
+            "location=$lat,$lon&timestamp=1331161200&key=AIzaSyCRb2M6zmsZlz5vqDSVhRjZShvUat6tqjc").readText()
     val timeZoneName = JSONObject(url).getString("timeZoneId")
-    return Coordinate(lat,lon,timeZoneName)
+    val cityName = arrayIn.getString("display_name")
+    return Coordinate(lat,lon,timeZoneName, cityName)
 }
 
-fun getTime (lat : String, lon : String, timeZoneName : String): String {
+fun getTime (lat: String, lon: String, timeZoneName: String, cityName: String?): String {
     val url = URL("https://api.sunrise-sunset.org/json?lat=$lat&lng=$lon&date=today").readText()
     val result = JSONObject(url)
     val res = result.getJSONObject("results")
@@ -27,35 +29,21 @@ fun getTime (lat : String, lon : String, timeZoneName : String): String {
     val convertedTimeSet = convertToCustomFormat(timeSet, timeZoneName)
     val timeRise = res.getString("sunrise")
     val convertedTimeRise = convertToCustomFormat(timeRise, timeZoneName)
-    return "Время восхода "+ convertedTimeRise + "\n" +
-            "Время заката " + convertedTimeSet
+    return "$cityName \n" +
+            "Время восхода ꟷ "+ convertedTimeRise + "\n" +
+            "Время заката ꟷ " + convertedTimeSet
 }
 
 fun convertToCustomFormat(dateStr: String?, timeZoneName: String?): String {
     val utc = TimeZone.getTimeZone("UTC")
+    val cityTime = TimeZone.getTimeZone(timeZoneName)
     val sourceFormat = SimpleDateFormat("hh:mm:ss a")
-    val destFormat = SimpleDateFormat("HH:mm:ss")
+    val destFormat = SimpleDateFormat("HH:mm")
     sourceFormat.timeZone = utc
-    destFormat.timeZone = TimeZone.getTimeZone(timeZoneName)
+    destFormat.timeZone = cityTime
     val convertedDate = sourceFormat.parse(dateStr)
     val result = destFormat.format(convertedDate)
     return result
 }
 
-//fun getTimeEuro(city: String):String {
-//    val cityTime = URL("https://timezoneapi.io/api/timezone/?Europe/$city&token=aFTerCYjbzLTxfAsGmkX").readText()
-//    val timeJson = JSONObject(cityTime)
-//    val data = timeJson.getJSONObject("data")
-//    val datetime = data.getJSONObject("datetime")
-//    return datetime.getString("date_time_txt").toString()
-//}
-//
-//fun getTimeAsia(city: String):String {
-////    var cityTime = URL("http://worldtimeapi.org/api/timezone/Asia/$city").readText()
-//
-//    val cityTime = URL("https://timezoneapi.io/api/timezone/?Asia/$city&token=aFTerCYjbzLTxfAsGmkX").readText()
-//    val timeJson = JSONObject(cityTime)
-//    val data = timeJson.getJSONObject("data")
-//    val datetime = data.getJSONObject("datetime")
-//    return datetime.getString("date_time_txt").toString()
-//}
+

@@ -46,7 +46,7 @@ val MainScenario = Scenario {
             action {
 
                 val coordinates = getCoordinate(request.input)
-                val time = getTime(coordinates.lat, coordinates.lon, coordinates.timeZoneName)
+                val time = getTime(coordinates.lat, coordinates.lon, coordinates.timeZoneName, coordinates.cityName)
                 reactions.alice?.say(time)
                 reactions.alice?.say("")
                 reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
@@ -54,78 +54,6 @@ val MainScenario = Scenario {
 
             }
         }
-        /*        action {
-            reactions.run {
-                say("В каком городе?")
-                buttons("Париж", "Лондон", "Москва", "Владивосток", "Токио")
-
-            }
-        }
-        state("Paris") {
-            activators {
-                regex("Париж|в Париже")
-            }
-            action {
-                val coordinates = getCoordinate("Paris")
-                val time = getTime(coordinates.lat, coordinates.lon)
-                reactions.alice?.say(time)
-                reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
-                reactions.buttons("Да, давай","Нет, спасибо")
-            }
-        }
-        state("London") {
-            activators {
-                regex("Лондон|в Лондоне")
-            }
-            action {
-                val coordinates = getCoordinate("London")
-                val time = getTime(coordinates.lat, coordinates.lon)
-                reactions.say(time)
-                reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
-                reactions.buttons("Да, хочу","Нет, спасибо")
-
-            }
-        }
-        state("Moscow") {
-            activators {
-                regex("Москва|Мск|в Москве|Столица|в столице")
-            }
-            action {
-                val coordinates = getCoordinate("Moscow")
-                val time = getTime(coordinates.lat, coordinates.lon)
-                reactions.say(time)
-                reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
-                reactions.buttons("Да, хочу","Нет, спасибо")
-
-            }
-        }
-        state("Vladivostok") {
-            activators {
-                regex("Владик|Владивосток|в Владивостоке|на Востоке")
-            }
-            action {
-                val coordinates = getCoordinate("Vladivostok")
-                val time = getTime(coordinates.lat, coordinates.lon)
-                reactions.say(time)
-                reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
-                reactions.buttons("Да, хочу","Нет, спасибо")
-
-            }
-        }
-        state("Tokyo") {
-            activators {
-                regex("В Токио|Токио|Япония")
-            }
-            action {
-                val coordinates = getCoordinate("Tokyo")
-                val time = getTime(coordinates.lat, coordinates.lon)
-                reactions.say(time)
-                reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
-                reactions.buttons("Да, хочу","Нет, спасибо")
-
-            }
-        }
-*/
     }
 
     state("no") {
