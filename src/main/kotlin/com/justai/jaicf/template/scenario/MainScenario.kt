@@ -46,7 +46,7 @@ val MainScenario = Scenario {
             action {
 
                 val coordinates = getCoordinate(request.input)
-                val time = getTime(coordinates.lat, coordinates.lon)
+                val time = getTime(coordinates.lat, coordinates.lon, coordinates.timeZoneName)
                 reactions.alice?.say(time)
                 reactions.alice?.say("")
                 reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
