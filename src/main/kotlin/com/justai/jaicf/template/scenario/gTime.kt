@@ -33,7 +33,7 @@ fun getTime (lat : String, lon : String, timeZoneName : String): String {
 
 fun convertToCustomFormat(dateStr: String?, timeZoneName: String?): String {
     val utc = TimeZone.getTimeZone("UTC")
-    val sourceFormat = SimpleDateFormat("hh:mm:ss aa")
+    val sourceFormat = SimpleDateFormat("hh:mm:ss a")
     val destFormat = SimpleDateFormat("HH:mm:ss")
     sourceFormat.timeZone = utc
     destFormat.timeZone = TimeZone.getTimeZone(timeZoneName)
