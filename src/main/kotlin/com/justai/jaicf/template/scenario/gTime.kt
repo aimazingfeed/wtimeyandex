@@ -1,8 +1,9 @@
 package com.justai.jaicf.template.scenario
 import com.justai.jaicf.template.Coordinate
-import org.json.*
+import org.json.JSONObject
 import java.net.URL
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 
@@ -37,11 +38,13 @@ fun getTime (lat: String, lon: String, timeZoneName: String, cityName: String?):
 fun convertToCustomFormat(dateStr: String?, timeZoneName: String?): String {
     val utc = TimeZone.getTimeZone("UTC")
     val cityTime = TimeZone.getTimeZone(timeZoneName)
-    val sourceFormat = SimpleDateFormat("hh:mm:ss a")
+    val now = LocalDate.now().toString()
+    val date = dateStr +" "+ now
+    val sourceFormat = SimpleDateFormat("hh:mm:ss a yyyy-MM-dd")
     val destFormat = SimpleDateFormat("HH:mm")
     sourceFormat.timeZone = utc
     destFormat.timeZone = cityTime
-    val convertedDate = sourceFormat.parse(dateStr)
+    val convertedDate = sourceFormat.parse(date)
     val result = destFormat.format(convertedDate)
     return result
 }
