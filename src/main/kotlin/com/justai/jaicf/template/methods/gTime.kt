@@ -1,5 +1,5 @@
-package com.justai.jaicf.template.scenario
-import com.justai.jaicf.template.Coordinate
+package com.justai.jaicf.template.methods
+import com.justai.jaicf.template.classes.Coordinate
 import org.json.JSONObject
 import java.net.URL
 import java.text.SimpleDateFormat

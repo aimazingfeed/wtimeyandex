@@ -1,9 +1,10 @@
 package com.justai.jaicf.template.scenario
-
 import com.justai.jaicf.builder.Scenario
 import com.justai.jaicf.channel.yandexalice.alice
 import com.justai.jaicf.channel.yandexalice.model.AliceEvent
 import com.justai.jaicf.context.DefaultActionContext
+import com.justai.jaicf.template.methods.getCoordinate
+import com.justai.jaicf.template.methods.getTime
 
 val MainScenario = Scenario {
 
@@ -46,7 +47,8 @@ val MainScenario = Scenario {
             action {
 
                 val coordinates = getCoordinate(request.input)
-                val time = getTime(coordinates.lat, coordinates.lon, coordinates.timeZoneName, coordinates.cityName)
+                val time = getTime(coordinates.lat, coordinates.lon,
+                    coordinates.timeZoneName, coordinates.cityName)
                 reactions.alice?.say(time)
                 reactions.alice?.say("")
                 reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
@@ -70,7 +72,7 @@ val MainScenario = Scenario {
     fallback {
         reactions.say(
             "Вы тратите моё драгоценное время! Вам интересно " +
-                    "узнать сколько времени?"
+                    "узнать время восхода и заката?"
         )
         reactions.buttons("Да", "Нет")
     }
