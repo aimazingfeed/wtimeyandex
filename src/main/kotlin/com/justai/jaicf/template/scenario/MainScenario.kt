@@ -16,10 +16,11 @@ val MainScenario = Scenario {
 
         action {
             reactions.run {
+                reactions.image("https://imgur.com/a/Tq07p8b")
                 say(
                     "Хотите узнать, когда встаёт и заходит солнце?"
                 )
-                reactions.image("https://imgur.com/a/Tq07p8b")
+
                 buttons("Хочу", "Нет уж, спасибо")
                 alice?.image(
                     "https://imgur.com/NkkK6iC",
