@@ -15,9 +15,10 @@ val MainScenario = Scenario {
         }
 
         action {
+            reactions.say("Хотите узнать, когда встаёт и заходит солнце?")
             reactions.alice?.image("https://i.imgur.com/iVG3EgK.png",
             "Мировое время",
-            "Хотите узнать, когда встаёт и заходит солнце?"
+            "Время заката и рассвета в любой точке мира"
             )
             reactions.alice?.buttons("Хочу", "Нет уж, спасибо")
 
