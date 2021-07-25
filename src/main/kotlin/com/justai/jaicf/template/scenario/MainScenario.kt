@@ -21,9 +21,9 @@ val MainScenario = Scenario {
                 )
                 buttons("Хочу", "Нет уж, спасибо")
                 alice?.image(
-                    "https://imgur.com/NkkK6iC",
-                    "Мировое время",
-                    "Хотите узнать, когда встаёт и заходит солнце?"
+                    url = "https://imgur.com/a/Tq07p8b"
+
+//                    description = "Хотите узнать, когда встаёт и заходит солнце?"
                 )
             }
         }
