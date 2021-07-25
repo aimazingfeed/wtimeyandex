@@ -31,8 +31,8 @@ fun getTime (lat: String, lon: String, timeZoneName: String, cityName: String?):
     val timeRise = res.getString("sunrise")
     val convertedTimeRise = convertToCustomFormat(timeRise, timeZoneName)
     return "$cityName \n" +
-            "Время восхода ꟷ "+ convertedTimeRise + "\n" +
-            "Время заката ꟷ " + convertedTimeSet
+            "Время восхода — "+ convertedTimeRise + "\n" +
+            "Время заката — " + convertedTimeSet
 }
 
 fun convertToCustomFormat(dateStr: String?, timeZoneName: String?): String {
