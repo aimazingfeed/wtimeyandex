@@ -15,17 +15,12 @@ val MainScenario = Scenario {
         }
 
         action {
-            reactions.run {
-                say(
-                    "Хотите узнать, когда встаёт и заходит солнце?"
-                )
-                buttons("Хочу", "Нет уж, спасибо")
-                alice?.image(
-                    url = "https://imgur.com/a/Tq07p8b"
+            reactions.alice?.image("https://i.imgur.com/iVG3EgK.png",
+            "Мировое время",
+            "Хотите узнать, когда встаёт и заходит солнце?"
+            )
+            reactions.alice?.buttons("Хочу", "Нет уж, спасибо")
 
-//                    description = "Хотите узнать, когда встаёт и заходит солнце?"
-                )
-            }
         }
     }
 
