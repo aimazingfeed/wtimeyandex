@@ -17,7 +17,7 @@ val MainScenario = Scenario {
         action {
             reactions.run {
                 say(
-                    "Хотите узнать, когда встаёт или заходит солнце?"
+                    "Хотите узнать, когда встаёт и заходит солнце?"
                 )
                 buttons("Хочу", "Нет уж, спасибо")
                 alice?.image(
