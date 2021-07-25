@@ -19,11 +19,12 @@ val MainScenario = Scenario {
                 say(
                     "Хотите узнать, когда встаёт и заходит солнце?"
                 )
+                reactions.image("https://imgur.com/a/Tq07p8b")
                 buttons("Хочу", "Нет уж, спасибо")
                 alice?.image(
                     "https://imgur.com/NkkK6iC",
                     "Мировое время",
-                    "Хотите узнать, когда встаёт или заходит солнце?"
+                    "Хотите узнать, когда встаёт и заходит солнце?"
                 )
             }
         }
@@ -50,8 +51,8 @@ val MainScenario = Scenario {
                 val time = getTime(coordinates.lat, coordinates.lon,
                     coordinates.timeZoneName, coordinates.cityName)
                 reactions.alice?.say(time)
-                reactions.alice?.say("")
-                reactions.alice?.say("\nХотите узнать время где-нибудь ещё?")
+                reactions.alice?.say("\n")
+                reactions.alice?.say("Хотите узнать время где-нибудь ещё?")
                 reactions.buttons("Да, давай", "Нет, спасибо")
 
             }
