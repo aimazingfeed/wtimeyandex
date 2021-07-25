@@ -16,7 +16,7 @@ val MainScenario = Scenario {
 
         action {
             reactions.run {
-                reactions.image("https://imgur.com/a/Tq07p8b")
+                image("https://imgur.com/a/Tq07p8b")
                 say(
                     "Хотите узнать, когда встаёт и заходит солнце?"
                 )
